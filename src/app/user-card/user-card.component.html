@@ -1,0 +1,20 @@
+<div
+  class="user">
+  <div
+    class="avatar">
+    <img
+      [src]="user.avatarUrl"
+      alt="User name">
+    <div
+      class="status" [ngClass]="user.availability"></div>
+  </div>
+  <div
+    class="name">
+   {{user.firstName}} {{user.lastName}}
+  </div>
+  <div
+    class="mood">
+    {{user.status}}
+  </div>
+</div>
+
