@@ -1,6 +1,7 @@
 import {
   Component,
   OnInit,
+  OnDestroy,
   Input
 } from '@angular/core';
 import {User} from '../../shared/interfaces/user';
@@ -10,14 +11,16 @@ import {User} from '../../shared/interfaces/user';
   templateUrl: './user-card.component.html',
   styleUrls: ['./user-card.component.css']
 })
-export class UserCardComponent implements OnInit {
+export class UserCardComponent implements OnInit, OnDestroy {
 
+
+  private interval: number;
 
   @Input()
   public user: User;
 
   public ngOnInit(): void {
-    setInterval(() => {
+    this.interval = setInterval(() => {
       let position = Math.floor(Math.random() * 4);
       switch (position) {
         case 0 :
@@ -33,6 +36,10 @@ export class UserCardComponent implements OnInit {
           this.user.availability = 'busy';
           break;
       }
-    }, Math.random() * 15000);
+    }, Math.random() * 15000) as any;
+  }
+
+  public ngOnDestroy(): void {
+    clearInterval(this.interval);
   }
 }

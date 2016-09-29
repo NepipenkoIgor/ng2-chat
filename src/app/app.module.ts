@@ -5,13 +5,17 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import {UserCardComponent} from './user-list/user-card/user-card.component';
+import {UserSearchComponent} from './user-list/user-search/user-search.component';
 import {UserListComponent} from './user-list/user-list.component';
+import {UserListPipe} from './user-list/user-list.pipe';
 
 @NgModule({
   declarations: [
+    UserSearchComponent,
     UserListComponent,
     UserCardComponent,
-    AppComponent
+    AppComponent,
+    UserListPipe
   ],
   imports: [
     BrowserModule,

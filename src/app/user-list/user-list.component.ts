@@ -14,9 +14,10 @@ let faker = require('faker');
 export class UserListComponent implements OnInit {
 
   public users: User[] = [];
+  public term: string;
 
   public ngOnInit(): void {
-    this.users = Array(10).fill('').map(user => this._getRandomUser());
+    this.users = Array(20).fill('').map(user => this._getRandomUser());
   }
 
   private _getRandomUser(): User {
@@ -28,4 +29,5 @@ export class UserListComponent implements OnInit {
       status: faker.lorem.sentence()
     };
   }
+
 }
