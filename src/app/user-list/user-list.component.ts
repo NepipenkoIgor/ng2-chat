@@ -3,8 +3,7 @@ import {
   OnInit
 } from '@angular/core';
 import {User} from '../shared/interfaces/user';
-
-let faker = require('faker');
+import {UserService} from '../shared/services/user.service';
 
 @Component({
   selector: 'ng2chat-user-list',
@@ -16,18 +15,15 @@ export class UserListComponent implements OnInit {
   public users: User[] = [];
   public term: string;
 
-  public ngOnInit(): void {
-    this.users = Array(20).fill('').map(user => this._getRandomUser());
+  private _userService: UserService;
+
+  constructor(_userService: UserService) {
+    this._userService = _userService;
   }
 
-  private _getRandomUser(): User {
-    return {
-      avatarUrl: faker.image.avatar(),
-      availability: 'offline',
-      firstName: faker.name.firstName(),
-      lastName: faker.name.lastName(),
-      status: faker.lorem.sentence()
-    };
+  public ngOnInit(): void {
+    this.users =   this._userService.getUsers();
   }
+
 
 }
