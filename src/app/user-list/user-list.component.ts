@@ -22,7 +22,9 @@ export class UserListComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.users =   this._userService.getUsers();
+    this._userService.getUsers().subscribe(users => {
+      this.users = users;
+    });
   }
 
 

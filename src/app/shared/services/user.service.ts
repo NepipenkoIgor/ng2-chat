@@ -1,21 +1,29 @@
 import {Injectable} from '@angular/core';
 import {User} from '../interfaces/user';
-let faker = require('faker');
-
+import {Http, Response} from '@angular/http';
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import {environment} from '../../../environments/environment';
 @Injectable()
 export class UserService {
 
-  public getUsers(): User[] {
-    return Array(20).fill('').map(user => this._getRandomUser());
+  private _http: Http;
+
+  constructor(_http: Http) {
+    this._http = _http;
   }
 
-  private _getRandomUser(): User {
-    return {
-      avatarUrl: faker.image.avatar(),
-      availability: 'offline',
-      firstName: faker.name.firstName(),
-      lastName: faker.name.lastName(),
-      status: faker.lorem.sentence()
-    };
+  public getUsers(): Observable<User[]> {
+    return this._http.get(environment.userUrl).map((res: Response) => res.json().results.map(user => {
+      return {
+        avatarUrl: user.picture.thumbnail,
+        availability: 'online',
+        firstName: user.name.first,
+        lastName: user.name.last,
+        status: 'My mood'
+      };
+    }));
+    // try use catch
   }
 }
