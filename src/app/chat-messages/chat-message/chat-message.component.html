@@ -1,9 +1,9 @@
 <div class="answer" [ngClass]="{right:true}">
   <div class="avatar">
     <img [src]="message.owner.avatar">
-    <div class="status" [ngClass]="message.owner.status"></div>
+    <div class="status" [ngClass]="message.owner.availability"></div>
   </div>
-  <div class="name">{{message.owner.firsName}} {{message.owner.lastName}}</div>
+  <div class="name">{{message.owner.firstName}} {{message.owner.lastName}}</div>
   <div class="text">{{message.text}}</div>
   <div class="time">{{message.date}}</div>
 </div>

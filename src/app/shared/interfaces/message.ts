@@ -3,7 +3,7 @@ export interface Message {
     avatar: string,
     firstName: string,
     lastName: string,
-    status: string
+    availability: string
   };
   text: string;
   date: number;
