@@ -10,6 +10,7 @@ import {UserListPipe} from './user-list/user-list.pipe';
 import {UserService} from './shared/services/user.service';
 import {ChatMessageComponent } from './chat-messages/chat-message/chat-message.component';
 import { ChatMessagesComponent } from './chat-messages/chat-messages.component';
+import { DateTimePipe } from './chat-messages/chat-message/date-time.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ChatMessagesComponent } from './chat-messages/chat-messages.component';
     AppComponent,
     UserListPipe,
     ChatMessageComponent,
-    ChatMessagesComponent
+    ChatMessagesComponent,
+    DateTimePipe
   ],
   imports: [
     BrowserModule,
