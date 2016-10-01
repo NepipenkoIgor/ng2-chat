@@ -8,6 +8,7 @@ import {UserSearchComponent} from './user-list/user-search/user-search.component
 import {UserListComponent} from './user-list/user-list.component';
 import {UserListPipe} from './user-list/user-list.pipe';
 import {UserService} from './shared/services/user.service';
+import {ChatMessageComponent } from './chat-message/chat-message.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import {UserService} from './shared/services/user.service';
     UserListComponent,
     UserCardComponent,
     AppComponent,
-    UserListPipe
+    UserListPipe,
+    ChatMessageComponent
   ],
   imports: [
     BrowserModule,
