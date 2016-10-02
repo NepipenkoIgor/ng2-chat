@@ -14,7 +14,7 @@ export class DateTimePipe implements PipeTransform {
     let hours: string | number = date.getHours();
     hours = hours < 10 ? `0${hours}` : hours;
     let minutes: string | number = date.getMinutes();
-    hours = minutes < 10 ? `0${minutes}` : minutes;
+    minutes = minutes < 10 ? `0${minutes}` : minutes;
     return `${day}.${month}.${date.getFullYear()} в ${hours}:${minutes}`;
   }
 }

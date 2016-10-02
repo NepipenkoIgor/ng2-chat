@@ -1,0 +1,36 @@
+.answer-add{
+  clear: both;
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  bottom: -62px;
+  padding: 20px;
+  background: #46be8a;
+}
+
+.answer-add input{
+  border: none;
+  background: none;
+  display: block;
+  width: 100%;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 0;
+  color: #ffffff;
+}
+.answer-add input:focus{
+  outline: none;
+}
+.answer-add .answer-btn {
+  display: block;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  position: absolute;
+  top: 50%;
+  margin-top: -18px;
+}
+.answer-btn-2 {
+  background: url(http://91.234.35.26/iwiki-admin/v1.0.0/admin/img/icon-41.png) 50% 50% no-repeat;
+  right: 20px;
+}

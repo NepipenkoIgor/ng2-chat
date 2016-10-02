@@ -1,5 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router'
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {AppComponent} from './app.component';
@@ -11,6 +12,13 @@ import {UserService} from './shared/services/user.service';
 import {ChatMessageComponent } from './chat-messages/chat-message/chat-message.component';
 import { ChatMessagesComponent } from './chat-messages/chat-messages.component';
 import { DateTimePipe } from './chat-messages/chat-message/date-time.pipe';
+import { ChatInputComponent } from './chat-input/chat-input.component';
+import { PrivateChatComponent } from './private-chat/private-chat.component';
+
+const routes = [
+  {path: '', component: ChatMessagesComponent},
+  {path: 'user/:userId', component: PrivateChatComponent}
+];
 
 @NgModule({
   declarations: [
@@ -21,12 +29,15 @@ import { DateTimePipe } from './chat-messages/chat-message/date-time.pipe';
     UserListPipe,
     ChatMessageComponent,
     ChatMessagesComponent,
-    DateTimePipe
+    DateTimePipe,
+    ChatInputComponent,
+    PrivateChatComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [UserService],
   bootstrap: [AppComponent]

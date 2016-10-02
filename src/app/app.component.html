@@ -5,19 +5,15 @@
 
     <div class="col-sm-3 col-xs-12">
       <div class="col-inside-lg decor-default chat"
-        style="overflow-y: scroll;outline: none;" tabindex="5000">
+           style="overflow-y: scroll;outline: none;" tabindex="5000">
         <ng2chat-user-list></ng2chat-user-list>
       </div>
     </div>
 
-    <div class="col-sm-9 col-xs-12 chat" style="height: calc(100vh - 180px);" tabindex="5001">
+    <div class="col-sm-9 col-xs-12 chat" style="height: calc(100vh - 180px);">
 
-          <ng2chat-chat-messages></ng2chat-chat-messages>
-          <div class="answer-add">
-            <input placeholder="Write a message">
-            <span class="answer-btn answer-btn-1"></span>
-            <span class="answer-btn answer-btn-2"></span>
-          </div>
+      <router-outlet></router-outlet>
+      <ng2chat-chat-input></ng2chat-chat-input>
 
     </div>
 
