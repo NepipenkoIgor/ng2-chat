@@ -17,6 +17,7 @@ export class UserService {
   public getUsers(): Observable<User[]> {
     return this._http.get(environment.userUrl).map((res: Response) => res.json().results.map(user => {
       return {
+        id: Math.floor(Math.random() * 10000),
         avatarUrl: user.picture.thumbnail,
         availability: 'online',
         firstName: user.name.first,
