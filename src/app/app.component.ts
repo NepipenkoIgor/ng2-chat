@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-
 @Component({
   selector: 'ng2chat-root',
   templateUrl: './app.component.html',

@@ -1,0 +1,21 @@
+<div
+  class="content container-fluid bootstrap snippets">
+  <div
+    class="row row-broken">
+
+    <div class="col-sm-3 col-xs-12">
+      <div class="col-inside-lg decor-default chat"
+           style="overflow-y: scroll;outline: none;" tabindex="5000">
+        <ng2chat-user-list></ng2chat-user-list>
+      </div>
+    </div>
+
+    <div class="col-sm-9 col-xs-12 chat" style="height: calc(100vh - 180px);">
+
+      <router-outlet></router-outlet>
+      <ng2chat-chat-input></ng2chat-chat-input>
+
+    </div>
+
+  </div>
+</div>
