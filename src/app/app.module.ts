@@ -13,7 +13,6 @@ import {ChatMessageComponent} from './chat-messages/chat-message/chat-message.co
 import {ChatMessagesComponent} from './chat-messages/chat-messages.component';
 import {DateTimePipe} from './chat-messages/chat-message/date-time.pipe';
 import {ChatInputComponent} from './chat-input/chat-input.component';
-import {PrivateChatComponent} from './private-chat/private-chat.component';
 import {AUTH_PROVIDERS} from 'angular2-jwt';
 import {AuthGuardService} from './shared/services/auth-guard.service';
 import {ChatComponent} from './chat/chat.component';
@@ -25,7 +24,7 @@ const routes = [
     path: 'chat', component: ChatComponent, canActivate: [AuthGuardService],
     children: [
       {path: '', component: ChatMessagesComponent},
-      {path: 'user/:userId', component: PrivateChatComponent},
+      {path: 'user/:userId', component: ChatMessagesComponent},
     ]
   },
   {
@@ -52,7 +51,6 @@ const firebaseConfig = {
     ChatMessagesComponent,
     DateTimePipe,
     ChatInputComponent,
-    PrivateChatComponent,
     ChatComponent
   ],
   imports: [

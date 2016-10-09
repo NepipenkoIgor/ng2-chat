@@ -1,4 +1,4 @@
-<div class="answer" [ngClass]="message.owner.user_id===user?.user_id?'right':'left'">
+<div class="answer" [ngClass]="message?.owner.user_id===user?.user_id?'right':'left'">
   <div class="avatar">
     <img [src]="message.owner.picture">
     <div class="status" [ngClass]="message.owner.availability"></div>

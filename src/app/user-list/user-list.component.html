@@ -1,7 +1,7 @@
 <div class="chat-users" *ngIf="users.length">
   <ng2chat-user-search (startSearch)="term=$event"></ng2chat-user-search>
   <ng2chat-user-card
-    [routerLink]="['user', user.id]"
+    [routerLink]="['user', user.user_id.split('|')[1]]"
     routerLinkActive="active"
     *ngFor="let user of users | userList:term" [user]="user" ></ng2chat-user-card>
 </div>
