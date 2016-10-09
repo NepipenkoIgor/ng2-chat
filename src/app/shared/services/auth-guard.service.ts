@@ -11,10 +11,13 @@ import 'rxjs/add/observable/merge';
 import 'rxjs/add/operator/first';
 import {AngularFire} from 'angularfire2';
 import {User} from '../interfaces/user';
+import {ReplaySubject} from 'rxjs/ReplaySubject';
 
 declare const Auth0Lock: any;
 @Injectable()
 export class AuthGuardService implements CanActivate {
+
+  private static _wait: ReplaySubject<any> = new ReplaySubject();
 
   private static _currentUser: User;
 
@@ -24,8 +27,6 @@ export class AuthGuardService implements CanActivate {
 
   public constructor(_angularFire: AngularFire) {
     this._angularFire = _angularFire;
-
-
     Observable.merge(
       Observable.of(localStorage.getItem('id_token')),
       Observable.create((observer: Observer<string>) =>
@@ -33,6 +34,7 @@ export class AuthGuardService implements CanActivate {
       .first(token => token)
       .switchMap((token: string): Observable<User> => {
         localStorage.setItem('id_token', token);
+        AuthGuardService._wait.next(true);
         return Observable.create((observer: Observer<User>) => {
           this._lock.getProfile(token, (error, profile) => {
             if (error) {
@@ -69,11 +71,15 @@ export class AuthGuardService implements CanActivate {
   }
 
   public canActivate() {
-    if (!this.authenticated()) {
-      this._lock.show();
-      return false;
-    }
-    return true;
+    this._lock.show();
+    return Observable.create((observer: Observer<boolean>) => {
+      AuthGuardService._wait.subscribe((isRoute) => {
+        this._lock.hide();
+        observer.next(isRoute);
+        observer.complete();
+      });
+
+    });
   }
 
   public authenticated() {

@@ -18,6 +18,7 @@ import {AuthGuardService} from './shared/services/auth-guard.service';
 import {ChatComponent} from './chat/chat.component';
 import {MessagesService} from './shared/services/messages.service';
 import {AngularFireModule} from 'angularfire2';
+import { WithOutMePipe } from './user-list/with-out-me.pipe';
 
 const routes = [
   {
@@ -51,7 +52,8 @@ const firebaseConfig = {
     ChatMessagesComponent,
     DateTimePipe,
     ChatInputComponent,
-    ChatComponent
+    ChatComponent,
+    WithOutMePipe
   ],
   imports: [
     BrowserModule,

@@ -1,7 +1,32 @@
 <div class="chat-users" *ngIf="users.length">
+
+
+  <ng2chat-user-card routerLinkActive="active" [user]="users[1]"></ng2chat-user-card>
+
+
   <ng2chat-user-search (startSearch)="term=$event"></ng2chat-user-search>
+
+  <div
+    class="user"
+    [routerLink]="['']">
+    <div
+      class="avatar">
+      <img
+        src="https://cdn1.iconfinder.com/data/icons/mix-color-4/502/Untitled-52-32.png"
+        alt="User name">
+    </div>
+    <div
+      class="name">Общак
+    </div>
+    <div
+      class="mood">
+      место где вы можете найти себе собеседника
+    </div>
+  </div>
+
+
   <ng2chat-user-card
     [routerLink]="['user', user.user_id.split('|')[1]]"
     routerLinkActive="active"
-    *ngFor="let user of users | userList:term" [user]="user" ></ng2chat-user-card>
+    *ngFor="let user of users | userList:term | withOutMe" [user]="user"></ng2chat-user-card>
 </div>
