@@ -18,7 +18,6 @@ export class ChatInputComponent implements OnInit {
 
 
   public sendMessage(message: string): void {
-    console.log(message);
     this._messagesService.sendMessage(message);
   }
 }
