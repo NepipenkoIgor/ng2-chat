@@ -12,6 +12,6 @@ import {
 export class UserSearchComponent  {
 
   @Output()
-  public startSearch: EventEmitter<string> = new EventEmitter();
+  public startSearch: EventEmitter<any> = new EventEmitter();
 
 }

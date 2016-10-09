@@ -1,8 +1,32 @@
 export interface User {
-  id: number,
-  avatarUrl: string;
+  clientID: string;
+  created_at: Date;
+  email: string;
+  events_url: string;
+  followers: number;
+  followers_url: string;
+  following: number;
+  following_url: string;
+  gists_url: string;
+  global_client_id: string;
+  gravatar_id: string;
+  html_url: string;
+  identities: any;
+  name: string;
+  nickname: string;
+  organizations_url: string;
+  picture: string;
+  public_gists: number;
+  public_repos: number;
+  received_events_url: string;
+  repos_url: string;
+  site_admin: boolean;
+  starred_url: string;
+  subscriptions_url: string;
+  type: string;
+  updated_at: Date;
+  url: string;
+  user_id: string;
   availability: 'offline' | 'online' | 'busy' | 'off';
-  firstName: string;
-  lastName: string;
   status: string;
 }

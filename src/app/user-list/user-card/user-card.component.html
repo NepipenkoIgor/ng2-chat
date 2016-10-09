@@ -3,14 +3,14 @@
   <div
     class="avatar">
     <img
-      [src]="user.avatarUrl"
+      [src]="user.picture"
       alt="User name">
     <div
       class="status" [ngClass]="user.availability"></div>
   </div>
   <div
     class="name">
-   {{user.firstName}} {{user.lastName}}
+   {{user.name}}
   </div>
   <div
     class="mood">

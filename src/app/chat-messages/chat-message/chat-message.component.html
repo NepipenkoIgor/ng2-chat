@@ -1,9 +1,9 @@
-<div class="answer" [ngClass]="{right:true}">
+<div class="answer" [ngClass]="message.owner.user_id===user?.user_id?'right':'left'">
   <div class="avatar">
-    <img [src]="message.owner.avatar">
+    <img [src]="message.owner.picture">
     <div class="status" [ngClass]="message.owner.availability"></div>
   </div>
-  <div class="name">{{message.owner.firstName}} {{message.owner.lastName}}</div>
+  <div class="name">{{message.owner.name}}</div>
   <div class="text">{{message.text}}</div>
   <div class="time">{{message.date | dateTime}}</div>
 </div>

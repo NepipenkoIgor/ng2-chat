@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {MessagesService} from '../shared/services/messages.service';
 import {Message} from '../shared/interfaces/message';
-let faker = require('faker');
 
 @Component({
   selector: 'ng2chat-chat-messages',
@@ -9,22 +9,21 @@ let faker = require('faker');
 })
 export class ChatMessagesComponent implements OnInit {
 
+  private _messagesService: MessagesService;
+
   public messages: Message[];
 
-  public ngOnInit(): void {
-    this.messages = Array(10).fill('').map(message => this._getRandomMessages());
+  constructor(_messagesService: MessagesService) {
+    this._messagesService = _messagesService;
+    this._messagesService.getMessageStream().subscribe((messages) => {
+      this.messages = messages;
+    });
+
   }
 
-  private _getRandomMessages(): Message {
-    return {
-      owner: {
-        avatar: faker.image.avatar(),
-        firstName: faker.name.firstName(),
-        lastName: faker.name.lastName(),
-        availability: 'online'
-      },
-      text: faker.lorem.sentence(),
-      date: Date.now()
-    };
+
+  public ngOnInit(): void {
+
   }
+
 }

@@ -17,6 +17,9 @@ import {PrivateChatComponent} from './private-chat/private-chat.component';
 import {AUTH_PROVIDERS} from 'angular2-jwt';
 import {AuthGuardService} from './shared/services/auth-guard.service';
 import {ChatComponent} from './chat/chat.component';
+import {MessagesService} from './shared/services/messages.service';
+import {AngularFireModule} from 'angularfire2';
+
 const routes = [
   {
     path: 'chat', component: ChatComponent, canActivate: [AuthGuardService],
@@ -29,6 +32,14 @@ const routes = [
     path: '**', redirectTo: 'chat'
   }
 ];
+
+const firebaseConfig = {
+  apiKey: 'AIzaSyAvxVwrF-YN0TKT-Gt_Scrw7ozyUVrNerc',
+  authDomain: 'users-da7e9.firebaseapp.com',
+  databaseURL: 'https://users-da7e9.firebaseio.com',
+  storageBucket: 'users-da7e9.appspot.com',
+};
+
 
 @NgModule({
   declarations: [
@@ -48,9 +59,10 @@ const routes = [
     BrowserModule,
     FormsModule,
     HttpModule,
+    AngularFireModule.initializeApp(firebaseConfig),
     RouterModule.forRoot(routes)
   ],
-  providers: [UserService, AuthGuardService, AUTH_PROVIDERS],
+  providers: [UserService, MessagesService, AuthGuardService, AUTH_PROVIDERS],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -12,6 +12,6 @@ export class UserListPipe implements PipeTransform {
     if (!term) {
       return users;
     }
-    return users.filter(user => new RegExp(`${term}`, 'i').test(`${user.firstName}${user.lastName}`));
+    return users.filter(user => new RegExp(`${term}`, 'i').test(`${user.name}`));
   }
 }
