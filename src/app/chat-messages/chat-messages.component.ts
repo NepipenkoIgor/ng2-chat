@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, ElementRef, OnDestroy, AfterContentChecked} from '@angular/core';
 import {MessagesService} from '../shared/services/messages.service';
 import {Message} from '../shared/interfaces/message';
 import {Subscription} from 'rxjs/Subscription';
@@ -9,7 +9,7 @@ import {ActivatedRoute} from '@angular/router';
   templateUrl: './chat-messages.component.html',
   styleUrls: ['./chat-messages.component.css']
 })
-export class ChatMessagesComponent implements OnInit, OnDestroy {
+export class ChatMessagesComponent implements OnInit, OnDestroy, AfterContentChecked {
 
   private _messagesService: MessagesService;
 
@@ -19,9 +19,15 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
   private _routerSubscription: Subscription;
   private _route: ActivatedRoute;
 
+  private _element: ElementRef;
+
+  private _chatHeight: number;
+
   constructor(_messagesService: MessagesService,
-              _route: ActivatedRoute) {
+              _route: ActivatedRoute,
+              _element: ElementRef) {
     this._route = _route;
+    this._element = _element;
     this._messagesService = _messagesService;
 
     this._routerSubscription = this._route.params.subscribe((params: any) => {
@@ -32,6 +38,15 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
         this.messages = messages;
       });
     });
+  }
+
+  ngAfterContentChecked() {
+    let height = this._element.nativeElement.querySelector('.decor-default').scrollHeight;
+    if (this._chatHeight === height) {
+      return;
+    }
+    this._chatHeight = height;
+    this._element.nativeElement.querySelector('.decor-default').scrollTop = height;
   }
 
   ngOnDestroy() {
