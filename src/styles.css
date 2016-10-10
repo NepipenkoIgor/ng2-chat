@@ -26,6 +26,7 @@ body {
 }
 
 .chat-users .user {
+  height: 36px;
   position: relative;
   padding: 0 0 0 50px;
   display: block;
