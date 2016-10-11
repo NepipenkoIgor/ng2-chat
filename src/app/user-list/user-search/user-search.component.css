@@ -13,6 +13,7 @@
   line-height: 20px;
   padding: 0;
   color: #ffffff;
+  text-indent: 20px;
 }
 .search input:focus{
   outline: none;

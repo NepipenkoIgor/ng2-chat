@@ -26,17 +26,21 @@ body {
 }
 
 .chat-users .user {
-  height: 36px;
+  height: 50px;
   position: relative;
-  padding: 0 0 0 50px;
+  padding: 0 0 0 65px;
   display: block;
   cursor: pointer;
-  margin: 0 0 20px;
+  margin: 0 0 10px;
+}
+.chat-users .user:hover{
+  background: #EBEBEB;
 }
 
 .chat-users .user .avatar {
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 15px;
+  transform: translate(0px, -50%);
 }
 
 .chat .avatar {
@@ -83,7 +87,7 @@ body {
 .chat-users .user .name {
   font-size: 14px;
   font-weight: bold;
-  line-height: 20px;
+  line-height: 28px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
