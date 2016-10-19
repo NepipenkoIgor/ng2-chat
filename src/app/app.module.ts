@@ -19,6 +19,7 @@ import {ChatComponent} from './chat/chat.component';
 import {MessagesService} from './shared/services/messages.service';
 import {AngularFireModule} from 'angularfire2';
 import { WithOutMePipe } from './user-list/with-out-me.pipe';
+import {MomentModule} from 'angular2-moment';
 
 const routes = [
   {
@@ -60,7 +61,8 @@ const firebaseConfig = {
     FormsModule,
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    MomentModule
   ],
   providers: [UserService, MessagesService, AuthGuardService, AUTH_PROVIDERS],
   bootstrap: [AppComponent]
